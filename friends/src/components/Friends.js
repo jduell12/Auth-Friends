@@ -10,6 +10,9 @@ import {FriendsContext} from '../contexts/FriendsContext';
 import FriendForm from './FriendForm';
 import EditFriend from './EditFriend';
 
+//styles
+import {StyledFriend} from '../styles/StyledFriend'
+
 const Friends = props => {
     const [friends, addFriends] = useState([]);
     const [friend, setFriend] = useState({});
@@ -55,13 +58,13 @@ const Friends = props => {
         {friends.length > 0 ? <span></span> :  <p>Loading...</p>}
         {(friends.length > 0 && !edit)? friends.map(friend => {
            return (
-                <div key={friend.id}>
+                <StyledFriend key={friend.id}>
                     <h3>{friend.name}</h3>
                     <p>Age: {friend.age}</p>
                     <p>Email: {friend.email}</p>
                     <button onClick={() => editFriend(friend)}>Edit Friend</button>
                     <button onClick={() => deleteFriend(friend.id)}>Delete Friend</button>
-                </div>
+                </StyledFriend>
             )
         }) : <span></span>}
         {

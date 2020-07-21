@@ -4,6 +4,7 @@
 
 body{
   text-align: center;
+  background: #F9F1F0;
 }
 
 a{
@@ -26,4 +27,5 @@ label{
 
 .friendForm{
   border: 1px solid black;
+  background: aliceblue;
 }
