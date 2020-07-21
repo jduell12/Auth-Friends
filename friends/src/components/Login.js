@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
 const Login = () => {
     const initialFormValues = {
@@ -14,7 +15,13 @@ const Login = () => {
 
     const login = e => {
         e.preventDefault();
-        console.log('in login');
+        axios
+            .post('http://localhost:5000/api/login', formValues)
+            .then(res => {
+                //set token to localstorage of user
+                localStorage.setItem('token', res.data.payload);
+            })
+            .catch(err => console.log(err));
         setValues(initialFormValues);
     }
 

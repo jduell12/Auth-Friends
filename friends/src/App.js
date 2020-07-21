@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <nav>
         <Link to="/login">Login</Link>
-        <Link>Friends</Link>
+        {/* <Link>Friends</Link> */}
       </nav>
       <Switch>
         <Route path="/login" component={Login}/>
