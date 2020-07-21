@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Login = props => {
+    const {history} = props;
+    
     const initialFormValues = {
         username: '',
         password: ''
@@ -20,6 +22,7 @@ const Login = () => {
             .then(res => {
                 //set token to localstorage of user
                 localStorage.setItem('token', res.data.payload);
+                history.push('/protected');
             })
             .catch(err => console.log(err));
         setValues(initialFormValues);
