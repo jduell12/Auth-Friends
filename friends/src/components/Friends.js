@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
 
 // utility functions
 import {axiosWithAuth} from '../utils/axiosWithAuth';
@@ -57,7 +56,7 @@ const Friends = props => {
             )
         }) : <span></span>}
         {
-            (friends.length > 0 && edit) ? <EditFriend friend={friend}/> :<span></span>
+            (friends.length > 0 && edit) ? <EditFriend friend={friend} setEdit={setEdit} addFriends={addFriends}/> :<span></span>
         }
     </div>)
 }

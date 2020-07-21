@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import e from 'express';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 const EditFriend = props => {
-    const {friend} = props;
+    const {friend, setEdit, addFriends} = props;
     
     const friendValues ={
         name: friend.name,
@@ -19,6 +19,13 @@ const EditFriend = props => {
 
     const editFriend = e => {
         e.preventDefault();
+        axiosWithAuth()
+            .put(`api/friends/${friend.id}`, friendInfo)
+            .then(res => {
+                addFriends(res.data);
+            })
+            .catch(err => console.log(err));
+        setEdit(false);
     }
 
     return(
@@ -27,14 +34,17 @@ const EditFriend = props => {
             <form onSubmit={editFriend}>
                 <label htmlFor="name">
                     Name: &nbsp;
-                    <input id="name" name="name" value={friendValues.name} onChange={handleChanges}/>
+                    <input id="name" name="name" value={friendInfo.name} onChange={handleChanges}/>
                 </label>
-                <label>
-                    <input />
+                <label htmlFor="age">
+                    Age: &nbsp;
+                    <input id="age" name="age" value={friendInfo.age} onChange={handleChanges}/>
                 </label>
-                <label>
-                    <input />
+                <label htmlFor="email">
+                    Email: &nbsp;
+                    <input id="email" name="email" value={friendInfo.email} onChange={handleChanges} />
                 </label>
+                <button>Edit Friend</button>
             </form>
         </div>
     )
