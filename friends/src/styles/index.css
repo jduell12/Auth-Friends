@@ -19,3 +19,11 @@ nav{
 label, div{
   margin: 1%;
 }
+
+label{
+  display: block;
+}
+
+.friendForm{
+  border: 1px solid black;
+}

@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
 
 //import utility functions
-import {axiosWithAuth} from '../utils/axiosWithAuth'
+import {axiosWithAuth} from '../utils/axiosWithAuth';
+
+//components
+import FriendForm from './FriendForm';
 
 const Friends = props => {
 
@@ -23,6 +26,8 @@ const Friends = props => {
 
     return(<div>
         <h1>Friends</h1>
+        <h2>Add a new Friend</h2>
+        <FriendForm />
         {friends.length > 0 ? friends.map(friend => {
            return (
                 <div key={friend.id}>
