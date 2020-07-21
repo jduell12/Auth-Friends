@@ -4,10 +4,10 @@ import React, {useState, useContext} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 //context
-import {FriendContext} from '../contexts/FriendContext'
+import {FriendsContext} from '../contexts/FriendsContext'
 
 const FriendForm = () => {
-    const {addFriends} = useContext(FriendContext);
+    const {addFriends} = useContext(FriendsContext);
 
     const initialFormValues = {
         name: '',
