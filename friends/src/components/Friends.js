@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
 
-//import utility functions
+// utility functions
 import {axiosWithAuth} from '../utils/axiosWithAuth';
+
+//contexts
+import {FriendContext} from '../contexts/FriendContext'
 
 //components
 import FriendForm from './FriendForm';
@@ -27,7 +30,9 @@ const Friends = props => {
     return(<div>
         <h1>Friends</h1>
         <h2>Add a new Friend</h2>
-        <FriendForm />
+        <FriendContext.Provider value={{addFriends}}>
+            <FriendForm />
+        </FriendContext.Provider>
         {friends.length > 0 ? friends.map(friend => {
            return (
                 <div key={friend.id}>
